@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Draw basic graphics1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+        #canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script type="text/javascript">
+    var canvas1 = document.getElementById('canvas');
+    //通过使用 document.getElementById() 方法来为 <canvas> 元素得到DOM对象
+    if (canvas1.getContext) {
+        var ctx = canvas1.getContext('2d');
+        //有了元素对象，你可以通过使用它的getContext() 方法来访问绘画上下文
+
+        ctx.fillStyle = "rgb(255,0,0)";
+        //设置颜色值
+        ctx.fillRect(10, 10, 40, 80);
+        //绘制一个矩形，前两个值为左上顶点位置，后两个值为宽和高
+        ctx.fillStyle = "rgba(0,255,0,0.5)";
+        //最后一个值设置透明度，1表示不透明
+        ctx.fillRect(30, 50, 80, 40);
+
+        //绘制空心矩形
+        ctx.fillStyle = "rgb(0,0,0)"
+        ctx.fillRect(10, 100, 120, 120);
+        ctx.clearRect(30, 120, 80, 80);
+        //清理指定矩形区域，让指定部分完全透明
+        ctx.strokeRect(35, 125, 70, 70);
+        //绘制一个矩形边框
+
+
+        //绘制填充的一个三角形
+        ctx.beginPath();
+        //beginPath() 新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径
+        ctx.moveTo(10, 240);
+        //moveTo() 将笔触移动到指定的坐标x以及y上
+        ctx.lineTo(10, 360);
+        //lineTo() 绘制一条从当前位置到指定x以及y位置的直线
+        ctx.lineTo(80, 300);
+        ctx.fill();
+        //fill() 通过填充路径的内容区域生成实心的图形
+
+        //绘制描边的一个三角形
+        ctx.beginPath();
+        ctx.moveTo(90,300);
+        ctx.lineTo(160,240);
+        ctx.lineTo(160,360);
+        ctx.closePath();
+        //closePath() 闭合路径之后图形绘制命令又重新指向到上下文中
+        ctx.stroke();
+        //stroke() 通过线条来绘制图形轮廓
+    }
+    </script>
+</body>
+
+</html>

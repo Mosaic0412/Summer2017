@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Deom2</title>
+    <style type="text/css">
+    a {
+        padding: 0 6px;
+        font-size: 26px;
+        color: black;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #fff;
+        background-color: #999;
+    }
+
+    a:active {
+        color: #f00;
+    }
+
+    #buttons {}
+    </style>
+</head>
+
+<body>
+    <h1>Change Photo</h1>
+    <img src="111.jpg" width="60%" height="60%">
+    <div id="buttons">
+        <span index="1"><a href="#">1</a></span>
+        <span index="2"><a href="#">2</a></span>
+        <span index="3"><a href="#">3</a></span>
+        <span index="4"><a href="#">4</a></span>
+    </div>
+    <button>Change user</button>
+    <script type="text/javascript">
+    var index = 1;
+    var buttons = document.getElementById('buttons').getElementsByTagName('span');
+
+    var myImage = document.querySelector('img');
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function() {
+            var myChoice = parseInt(this.getAttribute('index'));
+            switch (myChoice) {
+                case 1:
+                    myImage.setAttribute('src', '111.jpg');
+                    break;
+                case 2:
+                    myImage.setAttribute('src', '222.jpg');
+                    break;
+                case 3:
+                    myImage.setAttribute('src', '333.jpg');
+                    break;
+                case 4:
+                    myImage.setAttribute('src', '444.jpg');
+                    break;
+            }
+
+        }
+    }
+
+    var myButton = document.querySelector('button');
+    var myHeading = document.querySelector('h1');
+
+    function setUserName() {
+        var myName = prompt('Please enter your name');
+        localStorage.setItem('name', myName);
+        myHeading.innerHTML = 'Mozilla is cool, ' + myName;
+    }
+    if (!localStorage.getItem('name')) {
+        setUserName();
+    } else {
+        var storedName = localStorage.getItem('name');
+        myHeading.innerHTML = 'Mozilla is cool, ' + storedName;
+    }
+    myButton.onclick =function(){
+    	setUserName();
+    }
+    </script>
+</body>
+
+</html>

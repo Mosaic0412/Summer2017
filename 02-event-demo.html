@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script type="text/javascript">
+    window.onload = function() {
+        var canvas = document.getElementById('canvas');
+        canvas.addEventListener('mousedown', function(event) {
+            console.log("mouse down");
+        }, false);
+        canvas.addEventListener('mouseup', function(event) {
+            console.log("mouse up");
+        }, false);
+    };
+    </script>
+</body>
+</html>
+<!-- 在本例中，首先通过DOM接口使用document.getElementById方法访问canvas元素，然后将其保存在变量canvas中。然后为mousedown和mouseup事件添加了监听器。其中传入内嵌的回调函数（记住，函数可以作为对象传递），作为事件处理程序，该函数会把消息输出到调试控制台中。作为事件出处理程序的回调函数接收一个事件对象作为参数，其中包含事件相关信息，如事件的名称和触发事件的对象。
+	当用户在canvas元素上按鼠标按钮时，canvas回应：“嘿，鼠标按下了，赶紧通知监听器！”。然后它遍历mousedown列表
+并查看其中内容，当它找到一个被指定为事件处理程序的函数引用后，就会调用监听器上被引用的那个函数。如果还有其他对象也注册了mousedown事件的监听器，那么他们也会出现在那个列表中，并且之前定义的所有事件处理程序都将随之调用到。 -->

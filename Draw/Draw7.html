@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Draw Color</title>
+    <style type="text/css">
+    #canvas,
+    #canvas2,
+    #canvas3,
+    #canvas4,
+    #canvas5 {
+        border: 1px solid black;
+        margin: 10px;
+    }
+
+    #canvas3,
+    #canvas4 {
+        background-color: black;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas2" width="400" height="400"></canvas>
+    <canvas id="canvas3" width="400" height="400"></canvas>
+    <canvas id="canvas4" width="400" height="400"></canvas>
+    <canvas id="canvas5" width="400" height="400"></canvas>
+    <script type="text/javascript">
+    var ct1 = document.getElementById('canvas').getContext('2d');
+    for (var i = 0; i < 16; i++) {
+        for (var j = 0; j < 16; j++) {
+            ct1.fillStyle = 'rgb(' + Math.floor(255 - 16 * i) + ',' + Math.floor(255 - 16 * j) + ',0)';
+            ct1.fillRect(25 * i, 25 * j, 25, 25);
+        }
+    }
+
+    var ct2 = document.getElementById('canvas2').getContext('2d');
+    for (var i = 0; i < 16; i++) {
+        for (var j = 0; j < 16; j++) {
+            ct2.strokeStyle = 'rgb(' + Math.floor(255 - 16 * i) + ',' + Math.floor(255 - 16 * j) + ',0)';
+            ct2.beginPath();
+            ct2.arc(12 + 25 * i, 12 + 25 * j, 12, 0, Math.PI * 2, false);
+            ct2.stroke();
+        }
+    }
+
+    var ct3 = document.getElementById('canvas3').getContext('2d');
+    ct3.fillStyle = "#FFFFFF";
+    ct3.globalAlpha = 0.2;
+
+    for (var i = 0; i < 10; i++) {
+        ct3.beginPath();
+        ct3.arc(200, 200, 20 + 20 * i, 0, Math.PI * 2, false);
+        ct3.fill();
+    }
+
+    var ct4 = document.getElementById('canvas4').getContext('2d');
+    ct4.fillStyle = "#FFDD00";
+    ct4.fillRect(0, 0, 400, 100);
+    ct4.fillStyle = "#66CC00";
+    ct4.fillRect(0, 100, 400, 100);
+    ct4.fillStyle = "#0099FF";
+    ct4.fillRect(0, 200, 400, 100);
+    ct4.fillStyle = "#FF3300";
+    ct4.fillRect(0, 300, 400, 100);
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 4; j++) {
+            ct4.fillStyle = 'rgb(255,255,255,' + (i + 1) / 10 + ')';
+            ct4.fillRect(25 + i * 35, 10 + 100 * j, 35, 80);
+            ct4.fill();
+        }
+    }
+
+    var ct5 = document.getElementById('canvas5').getContext('2d');
+    //创建渐变
+    var radgrad = ct5.createRadialGradient(45, 45, 10, 50, 50, 30);
+    radgrad.addColorStop(0, "#A7D30C");
+    radgrad.addColorStop(0.9, '#019F62');
+    radgrad.addColorStop(1, 'rgba(1,159,98,0)');
+
+    var radgrad2 = ct5.createRadialGradient(105, 105, 20, 112, 120, 50);
+    radgrad2.addColorStop(0, '#FF5F98');
+    radgrad2.addColorStop(0.75, '#FF0188');
+    radgrad2.addColorStop(1, 'rgba(255,1,136,0)');
+
+    var radgrad3 = ct5.createRadialGradient(95, 15, 15, 102, 20, 40);
+    radgrad3.addColorStop(0, '#00C9FF');
+    radgrad3.addColorStop(0.8, '#00B5E2');
+    radgrad3.addColorStop(1, 'rgba(0,201,255,0)');
+
+    var radgrad4 = ct5.createRadialGradient(0, 150, 50, 0, 140, 90);
+    radgrad4.addColorStop(0, '#F4F201');
+    radgrad4.addColorStop(0.8, '#E4C700');
+    radgrad4.addColorStop(1, 'rgba(228,199,0,0)');
+
+    // 画图形
+    ct5.fillStyle = radgrad4;
+    ct5.fillRect(0, 0, 150, 150);
+    ct5.fillStyle = radgrad3;
+    ct5.fillRect(0, 0, 150, 150);
+    ct5.fillStyle = radgrad2;
+    ct5.fillRect(0, 0, 150, 150);
+    ct5.fillStyle = radgrad;
+    ct5.fillRect(0, 0, 150, 150);
+    </script>
+</body>
+
+</html>
